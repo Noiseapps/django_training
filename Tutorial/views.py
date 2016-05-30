@@ -1,5 +1,5 @@
 from Tutorial.models import Item
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.http.response import HttpResponse, HttpResponseRedirect
 # Create your views here.
@@ -38,7 +38,7 @@ def check_login(request):
         password = request.POST["password"]
         user = authenticate(username=username, password=password)
         if user is not None:
-            if user.is_staff:
+            if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect("/")
     return HttpResponseRedirect("/error")
@@ -48,3 +48,8 @@ def login_form(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect("/")
     return render(request, "login.html")
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect("/")

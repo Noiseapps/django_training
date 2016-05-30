@@ -5,12 +5,17 @@
     <title>Index</title>
 </head>
 <body>
+{{ user.username}}<br>
 
+<a href="/logout">Logout</a>
+<br>
 <a href="/add">Add item</a>
+<br>
 
+<br>
 <ul>
 {% for item in items %}
-    <li>{{ item.name }} <a href="/remove/{{ item.id }}">DELETE</a></li>
+    <li>{{ item.name }}<a href="/remove/{{ item.id }}">DELETE</a></li>
 {% endfor %}
 </ul>
 
