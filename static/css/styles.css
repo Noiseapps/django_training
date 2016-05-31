@@ -1,0 +1,10 @@
+.header {
+    color: rebeccapurple;
+    border: groove red 3px;
+}
+
+.content {
+    background-color: #79aec8;
+    padding: 25px;
+    margin: 10px;
+}

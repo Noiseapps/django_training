@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-{{ user.username}}<br>
+{% extends "base.html" %}
 
-{{ user.user_permissions }}<br>
+{% block header %}
 
-<a href="/logout">Logout</a>
-<br>
-<a href="/add">Add item</a>
-<br>
+Zalogowany jako : {{ user.username}}
+<a href="/logout">Wyloguj</a><br>
+{% endblock %}
 
-<br>
+{% block content %}
+
+<a href="/add">Dodaj obiekt</a><br>
 <ul>
 {% for item in items %}
-    <li>{{ item.name }}<a href="/remove/{{ item.id }}">DELETE</a></li>
+    <li>{{ item.name }}<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>
 {% endfor %}
 </ul>
-
-
-</body>
-</html>
+{% endblock %}

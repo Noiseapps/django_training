@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>NOT AUTHORIZED</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-You are not authorized to access this resource
+{% block title %}
+    ERROR
+{% endblock %}
 
+{% block header %}
+    <div><h3>Something went wrong :(</h3></div>
+{% endblock %}
 
-<a href="/login">Login</a>
-</body>
-</html>
+{# MAIN PAGE CONTENT #}
+
+{% block content %}
+    <div>You are not authorized to access this resource</div>
+    <div><a href="/login">Login</a></div>
+{% endblock %}
