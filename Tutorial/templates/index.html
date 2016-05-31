@@ -8,12 +8,21 @@
 
 {% block content %}
 
+    <a href="{% url 'Tutorial:index' %}{{ order|default:"" }}">
+        {% if order == None %}
+            Sortuj wg wartości domyślnej
+        {% else %}
+            Sortuj wg wartości losowej
+        {% endif %}
+    </a><br>
     <a href="{% url 'Tutorial:add' %}">Dodaj obiekt</a><br>
     <ul>
         {% for item in items %}
             {#    <li>{{ item.name }} ({{ item|safe }})<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>#}
-            <li><a href="{% url 'Tutorial:details' item.id %}">{{ item.name | upper}}</a> ({{ item }})<a href="{% url 'Tutorial:remove' item.id %}">&nbsp;Usuń</a>
+            <li><a href="{% url 'Tutorial:details' item.id %}">{{ item.name | upper }}</a> ({{ item }})<a
+                    href="{% url 'Tutorial:remove' item.id %}">&nbsp;Usuń</a>
             </li>
         {% endfor %}
     </ul>
+
 {% endblock %}
