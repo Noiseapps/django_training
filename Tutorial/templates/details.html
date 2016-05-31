@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+    Zalogowany jako : {{ user.username }}
+    <a href="/">Cofnij</a><br>
+{% endblock %}
+
+{% block content %}
+    Właściwości:
+    <ul>
+        <li>ID: {{ item.id }}</li>
+        <li>Wartość klucza głównego: {{ item.pk }}</li>
+        <li>Nazwa: {{ item.name }}</li>
+        <li><a href="{% url 'Tutorial:remove' item.id %}">Usuń</a></li>
+    </ul>
+{% endblock %}

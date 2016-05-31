@@ -2,16 +2,18 @@
 
 {% block header %}
 
-Zalogowany jako : {{ user.username}}
-<a href="/login/logout">Wyloguj</a><br>
+    Zalogowany jako : {{ user.username }}
+    <a href="/login/logout">Wyloguj</a><br>
 {% endblock %}
 
 {% block content %}
 
-<a href="/add">Dodaj obiekt</a><br>
-<ul>
-{% for item in items %}
-    <li>{{ item.name }}<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>
-{% endfor %}
-</ul>
+    <a href="/add">Dodaj obiekt</a><br>
+    <ul>
+        {% for item in items %}
+            {#    <li>{{ item.name }} ({{ item|safe }})<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>#}
+            <li><a href="{% url 'Tutorial:details' item.id %}">{{ item.name }}</a> ({{ item }})<a href="{% url 'Tutorial:remove' item.id %}">&nbsp;Usuń</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

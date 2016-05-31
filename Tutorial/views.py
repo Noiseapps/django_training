@@ -28,3 +28,8 @@ def add_item(request):
 def remove_item(request, item_id):
     Item.objects.get(pk=item_id).delete()
     return HttpResponseRedirect("/")
+
+
+def show_item_details(request, item_id):
+    item = Item.objects.get(pk=item_id)
+    return render(request, "details.html", {"item": item})
