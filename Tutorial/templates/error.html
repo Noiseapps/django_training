@@ -12,5 +12,5 @@
 
 {% block content %}
     <div>You are not authorized to access this resource</div>
-    <div><a href="/login">Login</a></div>
+    <div><a href="{% url 'Login:index' %}">Login</a></div>
 {% endblock %}

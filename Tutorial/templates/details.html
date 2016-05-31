@@ -3,7 +3,7 @@
 {% block header %}
 
     Zalogowany jako : {{ user.username }}
-    <a href="/">Cofnij</a><br>
+    <a href="{% url 'Tutorial:index' %}">Cofnij</a><br>
 {% endblock %}
 
 {% block content %}
