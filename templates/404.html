@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+    Zalogowany jako : {{ user.username }}
+    <a href="{% url 'Tutorial:index' %}">Cofnij</a><br>
+{% endblock %}
+
+{% block content %}
+    {{ request_path }}<br>
+    {{ exception }}<br>
+    Obiekt o podanym id nie został odnaleziony
+
+    {{ request }}
+{% endblock %}

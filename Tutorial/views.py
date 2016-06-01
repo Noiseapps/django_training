@@ -2,7 +2,8 @@ import random
 
 from Tutorial.models import Item
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import DetailView
 
 
 def index(request):
@@ -33,10 +34,11 @@ def add_item(request):
 
 
 def remove_item(request, item_id):
-    Item.objects.get(pk=item_id).delete()
+    db_item = get_object_or_404(Item, pk=item_id)
+    db_item.delete()
     return HttpResponseRedirect("/")
 
 
-def show_item_details(request, item_id):
-    item = Item.objects.get(pk=item_id)
-    return render(request, "details.html", {"item": item})
+class ItemView(DetailView):
+    template_name = "details.html"
+    model = Item
