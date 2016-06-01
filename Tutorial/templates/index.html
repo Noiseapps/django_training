@@ -15,7 +15,9 @@
             Sortuj wg wartości losowej
         {% endif %}
     </a><br>
-    <a href="{% url 'Tutorial:add' %}">Dodaj obiekt</a><br>
+    {% if perms.Tutorial.item_add %}
+        <a href="{% url 'Tutorial:add' %}">Dodaj obiekt</a><br>
+    {% endif %}
     <ul>
         {% for item in items %}
             {#    <li>{{ item.name }} ({{ item|safe }})<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>#}
