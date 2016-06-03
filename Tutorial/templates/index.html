@@ -1,30 +1,41 @@
 {% extends "base.html" %}
 
 {% block header %}
-
     Zalogowany jako : {{ user.username }}
     <a href="{% url 'Login:logout' %}">Wyloguj</a><br>
 {% endblock %}
 
 {% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
 
-    <a href="{% url 'Tutorial:index' %}{{ order|default:"" }}">
-        {% if order == None %}
-            Sortuj wg wartości domyślnej
-        {% else %}
-            Sortuj wg wartości losowej
-        {% endif %}
-    </a><br>
-    {% if perms.Tutorial.item_add %}
-        <a href="{% url 'Tutorial:add' %}">Dodaj obiekt</a><br>
-    {% endif %}
-    <ul>
-        {% for item in items %}
-            {#    <li>{{ item.name }} ({{ item|safe }})<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>#}
-            <li><a href="{% url 'Tutorial:details' item.id %}">{{ item.name | upper }}</a> ({{ item }})<a
-                    href="{% url 'Tutorial:remove' item.id %}">&nbsp;Usuń</a>
-            </li>
-        {% endfor %}
-    </ul>
+            {% if perms.Tutorial.item_add %}
+                <a class="col-sm-6" href="{% url 'Tutorial:add' %}">Dodaj obiekt</a>
+            {% endif %}
 
+            <a class="col-sm-6" href="{% url 'Tutorial:index' %}{{ order|default:"" }}">
+                {% if order == None %}
+                    Sortuj wg wartości domyślnej
+                {% else %}
+                    Sortuj wg wartości losowej
+                {% endif %}
+            </a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                {% for item in items %}
+                    {#    <li>{{ item.name }} ({{ item|safe }})<a href="/remove/{{ item.id }}">&nbsp;Usuń</a></li>#}
+                    <li class="list-group-item">
+                        <span class="col-sm-8">
+                            {{ item }}
+                        </span>
+                        <a class="col-sm-2" href="{% url 'Tutorial:details' item.id %}">Szczegóły</a>
+                        <a class="col-sm-2" href="{% url 'Tutorial:remove' item.id %}">&nbsp;Usuń</a>
+                        <div class="clearfix"></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

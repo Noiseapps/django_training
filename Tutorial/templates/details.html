@@ -12,6 +12,6 @@
         <li>ID: {{ item.id }}</li>
         <li>Wartość klucza głównego: {{ item.pk }}</li>
         <li>Nazwa: {{ item.name }}</li>
-        <li><a href="{% url 'Tutorial:remove' item.id %}">Usuń</a></li>
+        <li><button class="btn btn-danger" href="{% url 'Tutorial:remove' item.id %}">Usuń</button></li>
     </ul>
 {% endblock %}

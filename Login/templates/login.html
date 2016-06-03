@@ -11,9 +11,19 @@
 {# MAIN PAGE CONTENT #}
 
 {% block content %}
-<form action="{% url 'Login:index' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Login</button>
-</form>
+    <form action="{% url 'Login:index' %}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+
+
+{#        {{ form.as_p }}#}
+        <button type="submit" class="btn btn-primary col-sm-3 col-sm-offset-9">Login</button>
+    </form>
 {% endblock %}

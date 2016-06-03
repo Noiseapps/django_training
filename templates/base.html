@@ -6,19 +6,27 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
 </head>
 <body>
 
 
-<div class="header">
-    {% block header %}
-    {% endblock %}
+<div class="navbar navbar-default">
+    <div class="navbar-brand">
+        {% block header %}
+        {% endblock %}
+    </div>
 </div>
 
-<div class="content">
-    {% block content %}
-    {% endblock %}
+<div class="container-fluid">
+    <div class="col-sm-6 col-sm-offset-3">
+        {% block content %}
+        {% endblock %}
+    </div>
 </div>
 
+
+<script src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>

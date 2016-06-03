@@ -6,4 +6,5 @@ class Item(models.Model):
     random_value = models.IntegerField()
 
     def __unicode__(self):
+        # <script>alert('WUT');</script>
         return "This <b>objects name </b>is %s and random value %d" % (self.name, self.random_value)
